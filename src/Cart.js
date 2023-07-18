@@ -2,7 +2,7 @@ import React from "react";
 import CartItem from "./CartItem";
 
 const Cart = (props)=>{
-    const {products}=props;
+    const {products,total}=props;
     return(
         <div className="cart">
             {
@@ -18,6 +18,7 @@ const Cart = (props)=>{
                     );
                 })
             }
+            <div style={{padding:10,fontSize:20}}>TOTAL:{total}</div>
         </div>
     )
 }

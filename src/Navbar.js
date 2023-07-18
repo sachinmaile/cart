@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const Navbar = (props)=>{
     return  (
         <div style={styles.nav}>
+            <h1>eCommerce</h1>
+            <Link to='/AllProducts' style={{fontSize:20}}>Products</Link>
             <div style={styles.cartIconContainer}>
-                <img style={styles.cartIcon} src='https://cdn-icons-png.flaticon.com/128/3144/3144456.png'></img>
+                <Link to='/cart'><img style={styles.cartIcon} src='https://cdn-icons-png.flaticon.com/128/3144/3144456.png'></img></Link>
                 <span style={styles.cartCount}>{props.count}</span>
             </div>
         </div>
@@ -18,7 +21,7 @@ const styles= {
         height:70,
         background:'#4267b2',
         display:'flex',
-        justifyContent:'flex-end',
+        justifyContent:'space-between',
         alignItems:'center'
     },
     cartIconContainer:{

@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './Navbar';
 import Cart from './Cart';
 import {db,auth} from './Firebase'
+import AllProducts from './AllProducts';
 
 class App extends React.Component {
   constructor(){
@@ -80,16 +82,27 @@ class App extends React.Component {
     const {products,loading}=this.state;
     return (
       <div className="App">
-        <Navbar count={this.getCartCount()}/>
-        <button onClick={this.addProduct} style={{padding:20,fontSize:20}}>Add a Product</button>
-        <Cart
-            products={products}
-            onIncreaseQuantity={this.handleIncreaseQuantity}
-            onDecreaseQuantity={this.handleDecreaseQuantity}
-            onDeleteProduct={this.handleDeleteProduct}
-        />
+        
+        {/* <button onClick={this.addProduct} style={{padding:20,fontSize:20}}>Add a Product</button> */}
+        <BrowserRouter>
+          <Navbar count={this.getCartCount()}/>
+          <Routes>
+            <Route exact path='/cart' element={<Cart
+                  products={products}
+                  onIncreaseQuantity={this.handleIncreaseQuantity}
+                  onDecreaseQuantity={this.handleDecreaseQuantity}
+                  onDeleteProduct={this.handleDeleteProduct}
+                  total={this.getCartTotal()}
+              />}>
+            </Route>
+            <Route exact path='/AllProducts' element={<AllProducts
+                  products={products}
+              />}> 
+            </Route>
+          </Routes>          
+        </BrowserRouter>
         {loading && <h1>Loading products ...</h1>}
-        <div style={{padding:10,fontSize:20}}>TOTAL:{this.getCartTotal()}</div>
+        {/* <div style={{padding:10,fontSize:20}}>TOTAL:{this.getCartTotal()}</div> */}
       </div>
     );
   }
