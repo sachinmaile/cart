@@ -5,6 +5,7 @@ const Navbar = (props)=>{
         <div style={styles.nav}>
             <h1>eCommerce</h1>
             <Link to='/AllProducts' style={{fontSize:20}}>Products</Link>
+            <Link to='/AddProduct' style={{fontSize:20}}>Add Product</Link>
             <div style={styles.cartIconContainer}>
                 <Link to='/cart'><img style={styles.cartIcon} src='https://cdn-icons-png.flaticon.com/128/3144/3144456.png'></img></Link>
                 <span style={styles.cartCount}>{props.count}</span>

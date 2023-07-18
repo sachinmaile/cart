@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import 'firebase/compat/database'
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_apiKey,
@@ -18,4 +19,6 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
 
-export { auth, db };
+var cartDB = firebase.database().ref("Cart_Web_App");
+
+export { auth, db, cartDB };

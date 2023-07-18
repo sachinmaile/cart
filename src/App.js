@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Cart from './Cart';
 import {db,auth} from './Firebase'
 import AllProducts from './AllProducts';
+import AddProduct from './AddProduct';
 
 class App extends React.Component {
   constructor(){
@@ -99,10 +100,11 @@ class App extends React.Component {
                   products={products}
               />}> 
             </Route>
+            <Route exact path='/AddProduct' element={<AddProduct/>}> 
+            </Route>
           </Routes>          
         </BrowserRouter>
         {loading && <h1>Loading products ...</h1>}
-        {/* <div style={{padding:10,fontSize:20}}>TOTAL:{this.getCartTotal()}</div> */}
       </div>
     );
   }
