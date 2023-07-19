@@ -66,6 +66,12 @@ class App extends React.Component {
       .catch((error)=>{console.log('Error:',error)});
   }
 
+  handleSortByPrice = () => {
+    const {products}=this.state;
+    const sortedArray = [...products].sort((a, b) => a.price - b.price);
+    this.setState({products:sortedArray});
+  };
+
   getCartCount=()=>{
     const {products}=this.state;
     let count=0;
@@ -101,6 +107,8 @@ class App extends React.Component {
             </Route>
             <Route exact path='/AllProducts' element={<AllProducts
                   products={products}
+                  onDeleteProduct={this.handleDeleteProduct}
+                  sortProducts={this.handleSortByPrice}
               />}> 
             </Route>
             <Route exact path='/AddProduct' element={<AddProduct/>}> 
