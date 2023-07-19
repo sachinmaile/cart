@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import 'firebase/compat/database'
 
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+
 const AddProduct = () => {
   const [productData, setProductData] = useState({
     img: "",
@@ -59,65 +64,49 @@ const AddProduct = () => {
 
   return (
     <>
-        <div className="contact-rightside col-12 col-lg-7">
-            <form method="POST">
-            <div className="row">
-                <div className="col-12 col-lg-6 contact-input-feild">
-                <input
-                    type="text"
-                    name="img"
-                    id=""
-                    className="form-control"
-                    placeholder="Image"
-                    value={productData.img}
-                    onChange={postProductData}
-                />
-                </div>
-                <div className="col-12 col-lg-6 contact-input-feild">
-                <input
-                    type="number"
-                    name="price"
-                    id=""
-                    className="form-control"
-                    placeholder="Price"
-                    value={productData.price}
-                    onChange={postProductData}
-                />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-12 col-lg-6 contact-input-feild">
-                <input
-                    type="number"
-                    name="qty"
-                    id=""
-                    className="form-control"
-                    placeholder="Quantity"
-                    value={productData.qty}
-                    onChange={postProductData}
-                />
-                </div>
-                <div className="col-12 col-lg-6 contact-input-feild">
-                <input
-                    type="text"
-                    name="title"
-                    id=""
-                    className="form-control"
-                    placeholder="Name of the product"
-                    value={productData.title}
-                    onChange={postProductData}
-                />
-                </div>
-            </div>
-            
-            <button
-                type="submit"
-                className="btn btn-style w-100"
-                onClick={submitData}>
-                Submit
-            </button>
-            </form>
-        </div>
+     <Form method="post">
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+        <Form.Label column sm={2}>
+          Image
+        </Form.Label>
+        <Col sm={10}>
+          <Form.Control type="text" placeholder="Img URL" value={productData.img} onChange={postProductData} name="img"/>
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+        <Form.Label column sm={2}>
+          Price
+        </Form.Label>
+        <Col sm={10}>
+          <Form.Control type="number" name="price" placeholder="Price" value={productData.price} onChange={postProductData} />
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+        <Form.Label column sm={2}>
+          Quantity
+        </Form.Label>
+        <Col sm={10}>
+          <Form.Control type="number" name="qty" placeholder="Quantity" value={productData.qty} onChange={postProductData} />
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+        <Form.Label column sm={2}>
+          Title
+        </Form.Label>
+        <Col sm={10}>
+          <Form.Control type="text" placeholder="Name of the Product" value={productData.title} onChange={postProductData} name="title"/>
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3">
+        <Col sm={{ span: 10, offset: 2 }}>
+          <Button type="submit" onClick={submitData}>Submit</Button>
+        </Col>
+      </Form.Group>
+    </Form>
     </>
   );
 };
