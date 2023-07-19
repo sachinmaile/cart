@@ -5,7 +5,7 @@ const Product = (props)=> {
     const {price,title}=props.product;
     const {product}=props;
     return (
-        <div className="cart-item">
+        <div className="cart-item" style={styles.cartItem}>
             <div className="left-block">
                 <img style={styles.image} src={product.img}></img>
             </div>
@@ -23,6 +23,11 @@ const styles={
         width:110,
         borderRadius:4,
         background:'#ccc'
+    },
+    cartItem:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
     }
 };
 export default Product;

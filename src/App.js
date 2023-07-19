@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from './Navbar';
+import NavbarMenu from './Navbar';
 import Cart from './Cart';
 import {firebaseApp, db,auth, cartDB} from './Firebase'
 import AllProducts from './AllProducts';
@@ -89,7 +89,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar count={this.getCartCount()}/>
+          <NavbarMenu count={this.getCartCount()}/>
           <Routes>
             <Route exact path='/cart' element={<Cart
                   products={products}
