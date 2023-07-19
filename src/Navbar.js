@@ -16,7 +16,7 @@ const NavbarMenu = (props)=>{
           </Nav>
           <Navbar.Collapse className="justify-content-end">
             <div style={styles.cartIconContainer}>
-                <Link to='/cart'><img style={styles.cartIcon} src='https://cdn-icons-png.flaticon.com/128/3144/3144456.png'></img></Link>
+                <Link to='/cart'><img style={styles.cartIcon} src='https://cdn-icons-png.flaticon.com/128/3144/3144456.png' alt="Cart Icon"></img></Link>
                 <span style={styles.cartCount}>{props.count}</span>
             </div>
            </Navbar.Collapse>

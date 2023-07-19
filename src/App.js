@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavbarMenu from './Navbar';
 import Cart from './Cart';
-import {firebaseApp, db,auth, cartDB} from './Firebase'
+import {cartDB} from './Firebase'
 import AllProducts from './AllProducts';
 import AddProduct from './AddProduct';
 
@@ -59,7 +59,6 @@ class App extends React.Component {
   }
 
   handleDeleteProduct=(id)=>{
-      const {products}=this.state;
       const docRef=cartDB.child(id);
       docRef.remove()
       .then(()=>{console.log('Product Deleted Successfully')})
@@ -85,7 +84,7 @@ class App extends React.Component {
     const {products}=this.state;
     let cartTotal=0;
     products.map((product)=>{
-      cartTotal=cartTotal+(product.qty*product.price);
+      return cartTotal=cartTotal+(product.qty*product.price);
     });
     return cartTotal;
   }
