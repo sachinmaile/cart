@@ -39,18 +39,11 @@ class App extends React.Component {
     );
   }
 
-  // addProduct=()=>{
-  //   db.collection('products')
-  //   .add({img:'',price:900,qty:3,title:'Washing Machine'})
-  //   .then((docRef)=>{console.log('Product has been added',docRef)})
-  //   .catch((error)=>{console.log('Error:',error);})
-  // }
-
   handleIncreaseQuantity=(product)=>{
       const {products}=this.state;
       const index=products.indexOf(product);
-      const docRef=db.collection('products').doc(products[index].id);
-      docRef.update({qty:products[index].qty+1})
+      const docRef=cartDB.child(products[index].id);
+      docRef.update({qty:parseInt(products[index].qty)+1})
       .then(()=>{console.log('Quantity Increased Successfully')})
       .catch((error)=>{console.log('Error:',error)});
   }
@@ -59,16 +52,16 @@ class App extends React.Component {
       const {products}=this.state;
       const index=products.indexOf(product);
       if(products[index].qty===0){return;}
-      const docRef=db.collection('products').doc(products[index].id);
-      docRef.update({qty:products[index].qty-1})
+      const docRef=cartDB.child(products[index].id);
+      docRef.update({qty:parseInt(products[index].qty)-1})
       .then(()=>{console.log('Quantity Decreased Successfully')})
       .catch((error)=>{console.log('Error:',error)});
   }
 
   handleDeleteProduct=(id)=>{
       const {products}=this.state;
-      const docRef=db.collection('products').doc(id);
-      docRef.delete()
+      const docRef=cartDB.child(id);
+      docRef.remove()
       .then(()=>{console.log('Product Deleted Successfully')})
       .catch((error)=>{console.log('Error:',error)});
   }
@@ -77,7 +70,7 @@ class App extends React.Component {
     const {products}=this.state;
     let count=0;
     products.forEach((product)=>{
-      count+=product.qty;
+      count+=parseInt(product.qty);
     });
     return count;
   }
@@ -95,8 +88,6 @@ class App extends React.Component {
     const {products,loading}=this.state;
     return (
       <div className="App">
-        
-        {/* <button onClick={this.addProduct} style={{padding:20,fontSize:20}}>Add a Product</button> */}
         <BrowserRouter>
           <Navbar count={this.getCartCount()}/>
           <Routes>
