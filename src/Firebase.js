@@ -6,6 +6,7 @@ import 'firebase/compat/database'
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_apiKey,
     authDomain: process.env.REACT_APP_authDomain,
+    databaseURL: process.env.REACT_APP_databaseURL,
     projectId: process.env.REACT_APP_projectId,
     storageBucket: process.env.REACT_APP_storageBucket,
     messagingSenderId: process.env.REACT_APP_messagingSenderId,
@@ -19,6 +20,6 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
 
-var cartDB = firebase.database().ref("Cart_Web_App");
+var cartDB = firebaseApp.database().ref("productDataRecords");
 
-export { auth, db, cartDB };
+export { firebaseApp, auth, db, cartDB };

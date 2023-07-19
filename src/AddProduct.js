@@ -38,6 +38,7 @@ const AddProduct = () => {
           }),
         }
       );
+      
 
       if (res) {
         setProductData({
@@ -46,6 +47,7 @@ const AddProduct = () => {
             qty: "",
             title: ""
         });
+        console.log(res);
         alert("Data Stored");
       } else {
         alert("plz fill the data");
