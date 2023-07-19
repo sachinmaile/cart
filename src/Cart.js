@@ -1,10 +1,11 @@
 import React from "react";
 import CartItem from "./CartItem";
+import CardGroup from 'react-bootstrap/CardGroup';
 
 const Cart = (props)=>{
     const {products,total}=props;
     return(
-        <div className="cart">
+        <CardGroup>
             {
                 products.map((product)=>{
                     return (
@@ -19,7 +20,7 @@ const Cart = (props)=>{
                 })
             }
             <div style={{padding:10,fontSize:20}}>TOTAL:{total}</div>
-        </div>
+        </CardGroup>
     )
 }
 
